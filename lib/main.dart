@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'PreferencesPage.dart';
 import 'firebase_options.dart';
 import 'LoginPage.dart';
 import 'RegisterPage.dart';
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => LoginPage(),
         '/register': (context) => RegisterPage(),
         '/home': (context) => HomePage(),
+        '/preferences': (context) => PreferencesPage(),
       },
     );
   }

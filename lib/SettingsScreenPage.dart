@@ -2,6 +2,7 @@ import 'package:cheerify_flutter/ChangeEmailScreen.dart';
 import 'package:cheerify_flutter/ChangePasswordScreen.dart';
 import 'package:cheerify_flutter/ChangeUsernameScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart'; // Assurez-vous d'importer FirebaseAuth
 
 class SettingsScreen extends StatelessWidget {
   @override
@@ -36,6 +37,14 @@ class SettingsScreen extends StatelessWidget {
               context,
               MaterialPageRoute(builder: (context) => ChangePasswordScreen()),
             );
+          },
+        ),
+        ListTile(
+          leading: Icon(Icons.exit_to_app, color: Colors.red),
+          title: Text('Déconnexion', style: TextStyle(color: Colors.red)),
+          onTap: () async {
+            await FirebaseAuth.instance.signOut();
+            Navigator.of(context).pushReplacementNamed('/');
           },
         ),
       ],

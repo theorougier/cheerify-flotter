@@ -1,3 +1,4 @@
+import 'package:cheerify_flutter/CoherenceCardiaqueScreen.dart';
 import 'package:flutter/material.dart';
 
 import 'SettingsScreenPage.dart';
@@ -14,7 +15,8 @@ class _HomePageState extends State<HomePage> {
   static List<Widget> _widgetOptions = <Widget>[
     Text('Page d\'accueil',
         style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
-    SettingsScreen(), // Écran des paramètres à définir
+    CoherenceCardiaqueScreen(),
+    SettingsScreen() // Écran des paramètres à définir
   ];
 
   void _onItemTapped(int index) {
@@ -27,7 +29,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Accueil'),
+        title: Text(''),
       ),
       body: Center(
         // Afficher le widget sélectionné
@@ -38,6 +40,10 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Accueil',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite), // Choisissez une icône appropriée
+            label: 'Cohérence Cardiaque',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),

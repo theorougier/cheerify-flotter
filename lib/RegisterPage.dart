@@ -96,11 +96,26 @@ class RegisterPage extends StatelessWidget {
                             .set({
                           'username': usernameController.text,
                         });
-                        Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(builder: (context) => HomePage()),
-                          (Route<dynamic> route) => false,
-                        );
+                        bool arePreferencesSet =
+                            await checkUserPreferences(); // Implémentez cette fonction selon votre logique de stockage
+
+                        if (arePreferencesSet) {
+                          Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    HomePage()), // Assurez-vous que HomePage est bien importée si nécessaire
+                            (Route<dynamic> route) => false,
+                          );
+                        } else {
+                          Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    HomePage()), // Assurez-vous que HomePage est bien importée si nécessaire
+                            (Route<dynamic> route) => false,
+                          );
+                        }
                       } catch (e) {
                         // Gérer l'erreur
                         print(e);
@@ -128,5 +143,21 @@ class RegisterPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<bool> checkUserPreferences() async {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      final doc = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(user.uid)
+          .get();
+      if (doc.exists && doc.data()!.containsKey('preferences')) {
+        // Vérifiez si la liste des préférences n'est pas vide
+        List<dynamic> preferences = doc.data()!['preferences'];
+        return preferences.isNotEmpty;
+      }
+    }
+    return false;
   }
 }
