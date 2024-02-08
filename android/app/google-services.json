@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "872632915138",
+    "project_id": "cheerify-8979b",
+    "storage_bucket": "cheerify-8979b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:872632915138:android:d34d64fe7ce05f8338975b",
+        "android_client_info": {
+          "package_name": "com.example.cheerify_flutter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASwHjXfGo5DT4Zy3cZao7Pe-8-PJpg4Co"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
